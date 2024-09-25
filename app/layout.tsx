@@ -1,7 +1,6 @@
 import "@/app/ui/global.css";
 import { inter } from "./ui/fonts";
 import { Metadata } from "next";
-import { useRouter } from "next/router";
 
 export const metadata: Metadata = {
   title: {
@@ -17,10 +16,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const router = useRouter();
-  const projectRoot = process.cwd();
-  console.log(projectRoot);
-
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased`}>{children}</body>
