@@ -1,4 +1,9 @@
 import type { NextAuthConfig } from "next-auth";
+import Facebook from "next-auth/providers/facebook";
+import Google from "next-auth/providers/google";
+
+let auth: string;
+let nextUrl: string;
 
 export const authConfig = {
   pages: {
@@ -18,5 +23,5 @@ export const authConfig = {
     },
   },
 
-  providers: [], // Add providers with an empty array for now
+  providers: [Google, Facebook], // Add providers with an empty array for now
 } satisfies NextAuthConfig;
