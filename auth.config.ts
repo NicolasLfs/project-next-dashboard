@@ -2,8 +2,8 @@ import type { NextAuthConfig } from "next-auth";
 import Facebook from "next-auth/providers/facebook";
 import Google from "next-auth/providers/google";
 
-let auth: string;
-let nextUrl: string;
+let auth: string[] = [];
+let nextUrl: string[] = [];
 
 export const authConfig = {
   pages: {
