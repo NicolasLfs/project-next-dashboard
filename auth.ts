@@ -1,12 +1,12 @@
 import NextAuth from "next-auth";
 import { authConfig } from "./auth.config";
-import google from "next-auth/providers/google";
-import facebook from "next-auth/providers/facebook";
+import Google from "next-auth/providers/google";
+import Facebook from "next-auth/providers/facebook";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   ...authConfig,
   providers: [
-    google({
+    Google({
       clientId: process.env.AUTH_GOOGLE_ID,
       clientSecret: process.env.AUTH_GOOGLE_SECRET,
       async profile(profile) {
@@ -20,7 +20,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         },
       },
     }),
-    facebook({
+    Facebook({
       clientId: process.env.AUTH_FACEBOOK_ID,
       clientSecret: process.env.AUTH_FACEBOOK_SECRET,
       async profile(profile) {

@@ -1,4 +1,6 @@
 import type { NextAuthConfig } from "next-auth";
+import facebook from "next-auth/providers/facebook";
+import google from "next-auth/providers/google";
 
 export const authConfig = {
   pages: {
@@ -17,5 +19,5 @@ export const authConfig = {
       return true;
     },
   },
-  providers: [],
+  providers: [google, facebook],
 } satisfies NextAuthConfig;
