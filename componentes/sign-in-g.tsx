@@ -2,5 +2,9 @@
 import { signIn } from "next-auth/react";
 
 export default function SignIn() {
-  return <button onClick={() => signIn("google")}>Google</button>;
+  return (
+    <button type="submit" onClick={() => signIn("google")}>
+      Signin with Google
+    </button>
+  );
 }

@@ -1,23 +1,14 @@
 "use client";
 
 import { lusitana } from "@/app/ui/fonts";
-import {
-  AtSymbolIcon,
-  KeyIcon,
-  ExclamationCircleIcon,
-} from "@heroicons/react/24/outline";
-import { ArrowRightIcon } from "@heroicons/react/20/solid";
-import { Button } from "@/app/ui/button";
+
 import { useActionState } from "react";
 import { authenticate } from "@/app/lib/actions";
 import SignInGoogle from "@/componentes/sign-in-g";
 import SignInFacebook from "@/componentes/sign-in-f";
 
 export default function LoginForm() {
-  const [errorMessage, formAction, isPending] = useActionState(
-    authenticate,
-    undefined
-  );
+  const [errorMessage, formAction] = useActionState(authenticate, undefined);
 
   return (
     <div>

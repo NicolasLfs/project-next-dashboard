@@ -1,33 +1,24 @@
-import NextAuth, { type DefaultSession } from "next-auth";
-import Google from "next-auth/providers/google";
-import Facebook from "next-auth/providers/facebook";
-import { authConfig } from "./auth.config";
-import { sql } from "@vercel/postgres";
-import type { User } from "@/app/lib/definitions";
+import NextAuth from "next-auth";
+import authConfig from "./auth.config";
+import google from "next-auth/providers/google";
+import facebook from "next-auth/providers/facebook";
+import { redirect } from "next/dist/server/api-utils";
 
-async function getUser(email: string): Promise<User | undefined> {
-  try {
-    const user = await sql<User>`SELECT * FROM users WHERE email=${email}`;
-    return user.rows[0];
-  } catch (error) {
-    console.error("Failed to fetch user:", error);
-    throw new Error("Failed to fetch user.");
-  }
-}
-
-export const { handlers, signIn, signOut, auth } = NextAuth({
+export const { handlers, auth, signIn, signOut } = NextAuth({
   ...authConfig,
-  providers: [
-    Google({
-      authorization: {
-        params: {
-          prompt: "consent",
-          access_type: "offline",
-          response_type: "code",
-          scope: "https://www.googleapis.com/auth/userinfo.profile",
-        },
-      },
-    }),
-    Facebook,
-  ],
+
+  callbacks: {
+    authorized: async ({ auth, request: { nextUrl } }) => {
+      const isLoggedIn = !!auth?.user;
+      const isOnDashboard = nextUrl.pathname.startsWith("/dashboard");
+      if (isOnDashboard) {
+        if (isLoggedIn) return true;
+        return false; // Redirect unauthenticated users to login page
+      } else if (isLoggedIn) {
+        return Response.redirect(new URL("/dashboard", nextUrl));
+      }
+      return true;
+    },
+  },
+  providers: [google, facebook],
 });
