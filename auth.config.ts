@@ -19,5 +19,16 @@ export const authConfig = {
       return true;
     },
   },
+  cookies: {
+    pkceCodeVerifier: {
+      name: "next-auth.pkce.code_verifier",
+      options: {
+        httpOnly: true,
+        sameSite: "none",
+        path: "/",
+        secure: true,
+      },
+    },
+  },
   providers: [google, facebook],
 } satisfies NextAuthConfig;
