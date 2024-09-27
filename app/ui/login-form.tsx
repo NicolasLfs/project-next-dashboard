@@ -22,11 +22,7 @@ export default function LoginForm() {
           <h1 className={`${lusitana.className} mb-3 text-2xl`}>
             Please log in to continue.
           </h1>
-          <button
-            type="submit"
-            onClick={() => signIn("google")}
-            aria-disabled={isPending}
-          >
+          <button type="submit" onClick={() => signIn("google")}>
             Signin with Google
           </button>
           <SignInFacebook />
