@@ -6,4 +6,11 @@ const nextConfig: NextConfig = {
   },
 };
 
+module.exports = {
+  // ... outras configurações ...
+  logging: {
+    level: "verbose", // Mostra logs mais detalhados
+  },
+};
+
 export default nextConfig;
