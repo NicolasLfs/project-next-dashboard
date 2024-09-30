@@ -1,5 +1,5 @@
 {
-  "private": false,
+  "private": true,
   "scripts": {
     "build": "next build",
     "dev": "next dev",
@@ -39,6 +39,6 @@
     "@types/react-dom": "18.3.0"
   },
   "engines": {
-    "node": ">=20.12.0"
+    "node": ">=20.17.0"
   }
 }
