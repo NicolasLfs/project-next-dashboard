@@ -21,7 +21,6 @@ const links = [
   },
   { name: "Customers", href: "/dashboard/customers", icon: UserGroupIcon },
   { name: "Meta Ads", href: "/dashboard/meta-ads", icon: FaFacebook },
-  { name: "Google Ads", href: "/dashboard/google-ads", icon: FaGoogle },
 ];
 
 export default function NavLinks() {
