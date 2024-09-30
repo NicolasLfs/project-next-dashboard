@@ -7,7 +7,6 @@ import { authenticate } from "@/app/lib/actions";
 import SignInGoogle from "@/componentes/sign-in-g";
 import SignInFacebook from "@/componentes/sign-in-f";
 import { ExclamationCircleIcon } from "@heroicons/react/24/outline";
-import { signIn } from "next-auth/react";
 
 export default function LoginForm() {
   const [errorMessage, formAction, isPending] = useActionState(
